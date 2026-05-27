@@ -1,0 +1,36 @@
+log:
+  path: "test_access.log"
+
+thresholds:
+  http_errors:
+    window_seconds: 60
+    min_count: 10
+  brute_force:
+    window_seconds: 60
+    min_requests: 100
+  slow_response:
+    threshold_ms: 2000
+  keywords:
+    enabled: true
+    terms:
+      - "sql injection"
+      - "../"
+      - "<script"
+      - "eval("
+      - "/etc/passwd"
+      - "union select"
+
+alerting:
+  cooldown_seconds: 300
+
+email:
+  enabled: true
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  use_tls: true
+  username: "inglevishal264@gmail.com"
+  password: "dhfv dkpw vgrz pdyd"
+  from_addr: "inglevishal264@gmail.com"
+  to_addrs:
+    - "inglepatil45@gmail.com"
+  subject_prefix: "[LogAlert]"

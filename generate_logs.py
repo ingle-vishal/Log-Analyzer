@@ -1,20 +1,4 @@
-#!/usr/bin/env python3
-"""
-generate_logs.py – Fake Nginx access log generator for testing.
 
-Writes realistic log lines to a file in real-time.
-Run this in one terminal, run the analyzer in another.
-
-Usage:
-    python generate_logs.py                      # writes to test_access.log
-    python generate_logs.py --out /tmp/test.log
-    python generate_logs.py --scenario brute     # trigger brute-force alert
-    python generate_logs.py --scenario errors    # trigger error spike alert
-    python generate_logs.py --scenario slow      # trigger slow response alert
-    python generate_logs.py --scenario keyword   # trigger keyword alert
-    python generate_logs.py --scenario all       # cycle through all scenarios
-    python generate_logs.py --rate 5             # lines per second (default: 2)
-"""
 
 import argparse
 import random

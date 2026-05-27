@@ -1,61 +1,3 @@
-#!/usr/bin/env python3
-"""
-analyzer.py – Real-time Nginx/Apache log analyzer with email alerting.
-Self-contained single file. Only dependency: pyyaml
-
-Install:  pip install pyyaml
-Usage:
-    python analyzer.py                          # uses config.yaml in same folder
-    python analyzer.py --config path/to.yaml
-    python analyzer.py --log /var/log/nginx/access.log
-    python analyzer.py --log test_access.log --replay   # process from start
-    python analyzer.py --dry-run               # detect only, no emails sent
-    python analyzer.py --verbose               # print every parsed line
-
-config.yaml example (create this in the same folder):
-─────────────────────────────────────────────────────
-log:
-  path: "test_access.log"
-
-thresholds:
-  http_errors:
-    window_seconds: 60
-    min_count: 10
-  brute_force:
-    window_seconds: 60
-    min_requests: 100
-  slow_response:
-    threshold_ms: 2000
-  keywords:
-    enabled: true
-    terms:
-      - "sql injection"
-      - "../"
-      - "<script"
-      - "eval("
-      - "/etc/passwd"
-      - "union select"
-
-alerting:
-  cooldown_seconds: 300
-
-email:
-  enabled: true
-  smtp_host: "smtp.gmail.com"
-  smtp_port: 587
-  use_tls: true
-  username: "you@gmail.com"
-  password: "your-app-password"
-  from_addr: "you@gmail.com"
-  to_addrs:
-    - "alerts@yourcompany.com"
-  subject_prefix: "[LogAlert]"
-─────────────────────────────────────────────────────
-"""
-
-# ══════════════════════════════════════════════════════════════════════════════
-#  PARSER
-# ══════════════════════════════════════════════════════════════════════════════
 
 import re
 from dataclasses import dataclass, field
@@ -131,9 +73,6 @@ def parse_line(line: str) -> Optional[LogEntry]:
     )
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  DETECTOR
-# ══════════════════════════════════════════════════════════════════════════════
 
 import time
 from collections import defaultdict, deque

@@ -28,9 +28,9 @@ email:
   smtp_host: "smtp.gmail.com"
   smtp_port: 587
   use_tls: true
-  username: "inglevishal264@gmail.com"
-  password: "dhfv dkpw vgrz pdyd"
-  from_addr: "inglevishal264@gmail.com"
+  username: "__xxxx@gmail.com"
+  password: ""
+  from_addr: "__xxx4@gmail.com"
   to_addrs:
-    - "inglepatil45@gmail.com"
+    - "__xxx@gmail.com"
   subject_prefix: "[LogAlert]"
